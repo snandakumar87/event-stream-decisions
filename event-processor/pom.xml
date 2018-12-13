@@ -81,17 +81,17 @@
       <version>6.1.0.Final</version>
     </dependency>
      <dependency>
-            <groupId>org.drools</groupId>
-            <artifactId>drools-decisiontables</artifactId>
-            <version>7.11.0.Final-redhat-00003</version>
+      <groupId>org.drools</groupId>
+      <artifactId>drools-decisiontables</artifactId>
+      <version>6.1.0.Final</version>
 
-        </dependency>
+    </dependency>
 
-        <dependency>
-            <groupId>org.drools</groupId>
-            <artifactId>drools-workbench-models-guided-dtable</artifactId>
-            <version>7.11.0.Final-redhat-00003</version>
+    <dependency>
+      <groupId>org.drools</groupId>
+      <artifactId>drools-workbench-models-guided-dtable</artifactId>
+      <version>6.1.0.Final</version>
 
-        </dependency>
+    </dependency>
   </dependencies>
 </project>
