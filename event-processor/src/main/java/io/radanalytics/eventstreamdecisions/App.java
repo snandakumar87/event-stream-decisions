@@ -86,15 +86,8 @@ public class App {
             TrainingModel trainingModel2 = new TrainingModel("CUSTOMER_GOOD_STANDING",100);
             session.insert(trainingModel2);
             System.out.println("inserted training model in session");
-            int i = session.fireAllRules();
-            if(i > 0) {
-            eventAnalysis eventAnalys = null;
-
-            Collection<?> objects = session.getObjects(new ClassObjectFilter(eventAnalysis.class));
- 
-            eventAnalys = (eventAnalysis) objects.iterator().next();
-            
-            return eventAnalys.toString(); } else return "Values"+e.getEventCategory() + e.getEventValue();
+           
+           return session.getFactHandles().toString();
         }, DataTypes.StringType);
 
         /* configure the operations to read the input topic */
