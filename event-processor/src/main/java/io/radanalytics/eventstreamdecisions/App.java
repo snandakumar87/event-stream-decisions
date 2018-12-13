@@ -72,15 +72,18 @@ public class App {
         /* register a user defined function to apply rules on events */
         spark.udf().register("eventfunc", (String eventId, String eventCategory, String eventValue, String eventSrc) -> {
             KieSession session = broadcastRules.value().newKieSession();
+            System.out.println("Created session");
             Event e = new Event();
             e.setEventId(eventId);
             e.setEventCategory(eventCategory);
             e.setEventValue(eventValue);
             e.setEventSource(eventSrc);
+            System.out.println("Created event"+event);
             
-            session.execute(CommandFactory.newInsert(e));
+            session.insert(e);
             TrainingModel trainingModel2 = new TrainingModel("CUSTOMER_GOOD_STANDING",100);
-            session.execute(CommandFactory.newInsert(trainingModel2));
+            session.insert(trainingModel2);
+            System.out.println("Created training model"+trainingModel2);
             return "invoked rule";
         }, DataTypes.StringType);
 
