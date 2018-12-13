@@ -51,10 +51,11 @@ public class App {
         }
 
         StructType event_msg_struct = new StructType()
+            .add("event_id", DataTypes.StringType)
             .add("event_category", DataTypes.StringType)
-            .add("event_src", DataTypes.StringType)
             .add("event_value", DataTypes.StringType)
-            .add("event_id", DataTypes.StringType);
+            .add("event_src", DataTypes.StringType)
+            ;
 
         /* acquire a SparkSession object */
         SparkSession spark = SparkSession
