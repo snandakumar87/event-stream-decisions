@@ -10,17 +10,33 @@ from kafka import KafkaProducer
 
 
 EVENTS = [
-    'event_type_1',
-    'event_type_2',
-    'event_type_3',
-    'event_type_4'
+    'CC_BALANCE_PAYMENT',
+    'CC_TRANSACTION',
+    'DISPUTES',
+    'ONLINE_ACCOUNT'
+]
+
+VALUE = [
+    'LATE_PAYMENT',
+    'AIRLINE_PURCHASE',
+    'MIN_DUE',
+    'CASE_CREATED',
+    'PAYMENT_FAILURE'
+]
+
+SRC = [
+    'IVR',
+    'CC',
+    'ONLINE',
+    'MOBILE'
 ]
 
 
 def generate_event():
     ret = {
-        'user_id': random.randint(1000, 2000),
-        'event_type': EVENTS[random.randint(0, 3)],
+        'event_category': EVENTS[random.randint(0, 3)],
+        'event_src': SRC[random.randint(0, 3)],
+        'event_value': VALUE[random.randint(0, 3)],
         'event_id': str(uuid.uuid4())
     }
     return ret
