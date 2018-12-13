@@ -72,19 +72,29 @@ public class App {
         /* register a user defined function to apply rules on events */
         spark.udf().register("eventfunc", (String eventId, String eventCategory, String eventValue, String eventSrc) -> {
             KieSession session = broadcastRules.value().newKieSession();
-            System.out.println("Created session");
+            System.out.println("created session");
             Event e = new Event();
             e.setEventId(eventId);
             e.setEventCategory(eventCategory);
             e.setEventValue(eventValue);
             e.setEventSource(eventSrc);
-            System.out.println("Created event"+e);
-            
+            e.setEventDate(new Date());
             session.insert(e);
+
+
+            System.out.println("inserted event in session");
             TrainingModel trainingModel2 = new TrainingModel("CUSTOMER_GOOD_STANDING",100);
             session.insert(trainingModel2);
-            System.out.println("Created training model"+trainingModel2);
-            return "invoked rule";
+            System.out.println("inserted training model in session");
+            session.fireAllRules();
+
+            eventAnalysis eventAnalys = null;
+
+            Collection<?> objects = session.getObjects(new ClassObjectFilter(eventAnalysis.class));
+
+            eventAnalys = (eventAnalysis) objects.iterator().next();
+
+            return eventAnalys.toString();
         }, DataTypes.StringType);
 
         /* configure the operations to read the input topic */
