@@ -63,13 +63,15 @@ public class App {
             .getOrCreate();
 
         /* setup rules processing */
-        JavaSparkContext sc = new JavaSparkContext(spark.sparkContext());
-        KieBase rules = loadRules();
-        Broadcast<KieBase> broadcastRules = sc.broadcast(rules);
+
+
 
         /* register a user defined function to apply rules on events */
         spark.udf().register("eventfunc", (String eventId, String eventCategory, String eventValue, String eventSrc) -> {
-            KieSession kieSession = rules.newKieSession();
+            JavaSparkContext sc = new JavaSparkContext(spark.sparkContext());
+            KieBase rules = loadRules();
+            Broadcast<KieBase> broadcastRules = sc.broadcast(rules);
+            KieSession kieSession = broadcastRules.getValue().newKieSession();
             Event e = new Event();
             e.setEventId(eventId);
             e.setEventCategory(eventCategory);
@@ -101,7 +103,7 @@ public class App {
                                      functions.column("json.event_id"),
                                      functions.column("json.event_category"),
                                      functions.column("json.event_value"),
-                                     functions.column("json.event_value")).alias("value"));
+                                     functions.column("json.event_src")).alias("value"));
 
         /* configure the output stream */
         StreamingQuery writer = records
