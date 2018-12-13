@@ -65,27 +65,25 @@ public class App {
 
         /* setup rules processing */
 
-
+        JavaSparkContext sc = new JavaSparkContext(spark.sparkContext());
+        KieBase rules = loadRules();
+        Broadcast<KieBase> broadcastRules = sc.broadcast(rules);
 
         /* register a user defined function to apply rules on events */
         spark.udf().register("eventfunc", (String eventId, String eventCategory, String eventValue, String eventSrc) -> {
-            JavaSparkContext sc = new JavaSparkContext(spark.sparkContext());
-            KieBase rules = loadRules();
-            Broadcast<KieBase> broadcastRules = sc.broadcast(rules);
-            KieSession kieSession = broadcastRules.getValue().newKieSession();
+            KieSession session = broadcastRules.value().newKieSession();
             Event e = new Event();
             e.setEventId(eventId);
             e.setEventCategory(eventCategory);
             e.setEventValue(eventValue);
             e.setEventSource(eventSrc);
-            e.setEventDate(new Date());
-            kieSession.insert(e);
+            
+            session.execute(CommandFactory.newInsert(e));
             TrainingModel trainingModel2 = new TrainingModel("CUSTOMER_GOOD_STANDING",100);
-            kieSession.insert(trainingModel2);
-            kieSession.fireAllRules();
+            session.execute(CommandFactory.newInsert(trainingModel2));
             eventAnalysis eventAnalys = null;
 
-            Collection<?> objects = kieSession.getObjects(new ClassObjectFilter(eventAnalysis.class));
+            Collection<?> objects = session.getObjects(new ClassObjectFilter(eventAnalysis.class));
 
             eventAnalys = (eventAnalysis) objects.iterator().next();
             return eventAnalys.toString();
