@@ -34,10 +34,10 @@ SRC = [
 
 def generate_event():
     ret = {
+         'event_id': str(uuid.uuid4()),
         'event_category': EVENTS[random.randint(0, 3)],
-        'event_src': SRC[random.randint(0, 3)],
         'event_value': VALUE[random.randint(0, 3)],
-        'event_id': str(uuid.uuid4())
+        'event_src': SRC[random.randint(0, 3)]
     }
     return ret
 
