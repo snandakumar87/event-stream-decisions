@@ -81,12 +81,7 @@ public class App {
             session.execute(CommandFactory.newInsert(e));
             TrainingModel trainingModel2 = new TrainingModel("CUSTOMER_GOOD_STANDING",100);
             session.execute(CommandFactory.newInsert(trainingModel2));
-            eventAnalysis eventAnalys = null;
-
-            Collection<?> objects = session.getObjects(new ClassObjectFilter(eventAnalysis.class));
-
-            eventAnalys = (eventAnalysis) objects.iterator().next();
-            return eventAnalys.toString();
+            return "invoked rule";
         }, DataTypes.StringType);
 
         /* configure the operations to read the input topic */
