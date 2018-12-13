@@ -10,18 +10,12 @@ from kafka import KafkaProducer
 
 
 EVENTS = [
-    'CC_BALANCE_PAYMENT',
-    'CC_TRANSACTION',
-    'DISPUTES',
-    'ONLINE_ACCOUNT'
+    'CC_BALANCE_PAYMENT'
 ]
 
 VALUE = [
-    'LATE_PAYMENT',
-    'AIRLINE_PURCHASE',
-    'MIN_DUE',
-    'CASE_CREATED',
-    'PAYMENT_FAILURE'
+    'LATE_PAYMENT'
+    
 ]
 
 SRC = [
