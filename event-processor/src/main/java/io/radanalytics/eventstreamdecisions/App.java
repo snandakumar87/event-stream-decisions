@@ -78,7 +78,7 @@ public class App {
             e.setEventCategory(eventCategory);
             e.setEventValue(eventValue);
             e.setEventSource(eventSrc);
-            System.out.println("Created event"+event);
+            System.out.println("Created event"+e);
             
             session.insert(e);
             TrainingModel trainingModel2 = new TrainingModel("CUSTOMER_GOOD_STANDING",100);
