@@ -90,11 +90,14 @@ public class App {
 
             eventAnalysis eventAnalys = null;
 
+            
             Collection<?> objects = session.getObjects(new ClassObjectFilter(eventAnalysis.class));
 
+            if(null != objects) {
+            
             eventAnalys = (eventAnalysis) objects.iterator().next();
-
-            return eventAnalys.toString();
+            
+            return eventAnalys.toString(); } else return "Values"+e.getEventCategory() + e.getEventValue();
         }, DataTypes.StringType);
 
         /* configure the operations to read the input topic */
