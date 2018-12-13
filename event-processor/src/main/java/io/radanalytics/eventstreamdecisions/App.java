@@ -10,12 +10,11 @@ https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html
 */
 package io.radanalytics.eventstreamdecisions;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
+import java.util.*;
 
+import com.Event;
+import com.TrainingModel;
+import com.eventAnalysis;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.broadcast.Broadcast;
 import org.apache.spark.sql.*;
@@ -25,7 +24,9 @@ import org.apache.spark.sql.types.StructType;
 
 import org.kie.api.KieBase;
 import org.kie.api.KieServices;
+import org.kie.api.runtime.ClassObjectFilter;
 import org.kie.api.runtime.KieContainer;
+import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.StatelessKieSession;
 import org.kie.internal.command.CommandFactory;
 
@@ -50,8 +51,9 @@ public class App {
         }
 
         StructType event_msg_struct = new StructType()
-            .add("user_id", DataTypes.IntegerType)
-            .add("event_type", DataTypes.StringType)
+            .add("event_category", DataTypes.StringType)
+            .add("event_src", DataTypes.StringType)
+            .add("event_value", DataTypes.StringType)
             .add("event_id", DataTypes.StringType);
 
         /* acquire a SparkSession object */
@@ -66,14 +68,24 @@ public class App {
         Broadcast<KieBase> broadcastRules = sc.broadcast(rules);
 
         /* register a user defined function to apply rules on events */
-        spark.udf().register("eventfunc", (String eventId, String eventType, Integer userId) -> {
-            StatelessKieSession session = broadcastRules.value().newStatelessKieSession();
+        spark.udf().register("eventfunc", (String eventId, String eventCategory, String eventValue, String eventSrc) -> {
+            KieSession kieSession = rules.newKieSession();
             Event e = new Event();
             e.setEventId(eventId);
-            e.setEventType(eventType);
-            e.setUserId(userId);
-            session.execute(CommandFactory.newInsert(e));
-            return e.getNextEvent();
+            e.setEventCategory(eventCategory);
+            e.setEventValue(eventValue);
+            e.setEventSource(eventSrc);
+            e.setEventDate(new Date());
+            kieSession.insert(e);
+            TrainingModel trainingModel2 = new TrainingModel("CUSTOMER_GOOD_STANDING",100);
+            kieSession.insert(trainingModel2);
+            kieSession.fireAllRules();
+            eventAnalysis eventAnalys = null;
+
+            Collection<?> objects = kieSession.getObjects(new ClassObjectFilter(eventAnalysis.class));
+
+            eventAnalys = (eventAnalysis) objects.iterator().next();
+            return eventAnalys.toString();
         }, DataTypes.StringType);
 
         /* configure the operations to read the input topic */
@@ -87,8 +99,9 @@ public class App {
             .select(functions.from_json(functions.column("value"), event_msg_struct).alias("json"))
             .select(functions.callUDF("eventfunc",
                                      functions.column("json.event_id"),
-                                     functions.column("json.event_type"),
-                                     functions.column("json.user_id")).alias("value"));
+                                     functions.column("json.event_category"),
+                                     functions.column("json.event_value"),
+                                     functions.column("json.event_value")).alias("value"));
 
         /* configure the output stream */
         StreamingQuery writer = records
