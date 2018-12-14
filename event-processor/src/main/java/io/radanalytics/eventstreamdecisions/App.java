@@ -87,7 +87,7 @@ public class App {
             session.insert(trainingModel2);
             System.out.println("inserted training model in session");
            
-           return session.getFactHandles().toString();
+           return session.getFactHandles().size();
         }, DataTypes.StringType);
 
         /* configure the operations to read the input topic */
