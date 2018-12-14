@@ -71,14 +71,37 @@
       <version>${spark.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.apache.spark</groupId>
-      <artifactId>spark-sql-kafka-0-10_${scala.binary.version}</artifactId>
-      <version>${spark.version}</version>
-    </dependency>
-    <dependency>
       <groupId>org.drools</groupId>
+<<<<<<< HEAD
+      <artifactId>drools-decisiontables</artifactId>
+      <version>7.11.0.Final-redhat-00003</version>
+
+  </dependency>
+
+  <dependency>
+      <groupId>org.drools</groupId>
+      <artifactId>drools-workbench-models-guided-dtable</artifactId>
+      <version>7.11.0.Final-redhat-00003</version>
+
+  </dependency>
+
+=======
       <artifactId>drools-compiler</artifactId>
       <version>6.1.0.Final</version>
     </dependency>
+     <dependency>
+      <groupId>org.drools</groupId>
+      <artifactId>drools-decisiontables</artifactId>
+      <version>6.1.0.Final</version>
+
+    </dependency>
+
+    <dependency>
+      <groupId>org.drools</groupId>
+      <artifactId>drools-workbench-models-guided-dtable</artifactId>
+      <version>6.1.0.Final</version>
+
+    </dependency>
+>>>>>>> 41001539a885c25d3d3186068332233ae526f16f
   </dependencies>
 </project>
