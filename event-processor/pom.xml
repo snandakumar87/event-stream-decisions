@@ -18,26 +18,8 @@
   <build>
     <plugins>
       
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.0.2</version>
-        <configuration>
-          <archive>
-            <manifest>
-              <addClasspath>true</addClasspath>
-              <mainClass>io.radanalytics.eventstreamdecisions.App</mainClass>
-            </manifest>
-          </archive>
-        </configuration>
-      </plugin>
-            <plugin>
-                <groupId>org.kie</groupId>
-                <artifactId>kie-maven-plugin</artifactId>
-               <version>7.15.0.Final</version>
-                <extensions>true</extensions>
-            </plugin>
-        
+     
+           
      
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -93,11 +75,7 @@
       <version>7.15.0.Final</version>
 
   </dependency>
-     <dependency>
-        <groupId>org.drools</groupId>
-        <artifactId>drools-workbench-models-guided-dtable</artifactId>
-        <version>7.7.0.Final</version>
-    </dependency>
+     
 
 
   </dependencies>
