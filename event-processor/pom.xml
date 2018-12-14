@@ -25,7 +25,7 @@
         <configuration>
           <archive>
             <manifest>
-              
+              <addClasspath>true</addClasspath>
               <mainClass>io.radanalytics.eventstreamdecisions.App</mainClass>
             </manifest>
           </archive>
