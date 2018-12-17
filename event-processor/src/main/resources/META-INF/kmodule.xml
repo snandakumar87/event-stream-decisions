@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
-<kbase name="EventKBase" equalsBehavior="equality" eventProcessingMode="stream" packages="io.radanalytics.eventstreamdecisions">
-  <ksession name="EventKSession" default="true" type="stateful" clockType="pseudo"/>
-  <ksession name="defaultStatelessKieSession" type="stateless" default="true" clockType="realtime" scope="javax.enterprise.context.ApplicationScoped"/> 
-</kbase>
+    <kbase name="ccfd-rules" equalsBehavior="equality" eventProcessingMode="stream" packages="rules">
+        <ksession name="cdfd-session" default="true" type="stateful" clockType="pseudo"/>
+    </kbase>
 </kmodule>
