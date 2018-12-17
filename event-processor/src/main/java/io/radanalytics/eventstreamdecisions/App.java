@@ -117,9 +117,14 @@ public class App {
     }
 
     public static KieBase loadRules() {
-        KieServices kieServices = KieServices.Factory.get();
-        KieContainer kieContainer = kieServices.getKieClasspathContainer();
-        return kieContainer.getKieBase();
+        try {
+            KieServices kieServices = KieServices.Factory.get();
+            KieContainer kieContainer = kieServices.getKieClasspathContainer();
+            return kieContainer.getKieBase();
+        }catch(Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }
