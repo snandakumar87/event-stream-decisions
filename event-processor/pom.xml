@@ -97,6 +97,10 @@
       <version>7.15.0.Final</version>
 
   </dependency>
+    <dependency>
+<groupId>org.drools</groupId>
+<artifactId>drools-workbench-models-guided-scorecard</artifactId>
+</dependency>
      
  <dependency>
             <groupId>com.thoughtworks.xstream</groupId>
