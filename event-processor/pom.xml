@@ -99,7 +99,7 @@
   </dependency>
        <dependency>
       <groupId>org.drools</groupId>
-      <artifactId>drools-scorecards</artifactId>
+       <artifactId>drools-workbench-models-guided-scorecard</artifactId>
       <version>6.1.0.Final</version>
 
     </dependency>
