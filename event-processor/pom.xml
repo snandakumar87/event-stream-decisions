@@ -30,6 +30,12 @@
           </archive>
         </configuration>
       </plugin>
+      <plugin>
+                <groupId>org.kie</groupId>
+                <artifactId>kie-maven-plugin</artifactId>
+                <version>7.15.0.Final</version>
+                <extensions>true</extensions>
+            </plugin>
      
            
      
