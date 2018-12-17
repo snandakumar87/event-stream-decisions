@@ -2,5 +2,6 @@
 <kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
 <kbase name="EventKBase" equalsBehavior="equality" eventProcessingMode="stream" packages="io.radanalytics.eventstreamdecisions">
   <ksession name="EventKSession" default="true" type="stateful" clockType="pseudo"/>
+  <ksession name="defaultStatelessKieSession" type="stateless" default="true" clockType="realtime" scope="javax.enterprise.context.ApplicationScoped"/> 
 </kbase>
 </kmodule>
