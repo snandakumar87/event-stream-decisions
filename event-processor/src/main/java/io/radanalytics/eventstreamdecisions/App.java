@@ -79,13 +79,16 @@ public class App {
             kieSession.insert(e);
             TrainingModel trainingModel2 = new TrainingModel("CUSTOMER_GOOD_STANDING",100);
             kieSession.insert(trainingModel2);
-            kieSession.fireAllRules();
+            int fired = kieSession.fireAllRules();
+            if(fired > 0) {
             eventAnalysis eventAnalys = null;
 
             Collection<?> objects = kieSession.getObjects(new ClassObjectFilter(eventAnalysis.class));
 
             eventAnalys = (eventAnalysis) objects.iterator().next();
-            return eventAnalys.toString();
+            return eventAnalys.toString(); } else {
+             return "No Match";   
+            }
         }, DataTypes.StringType);
 
         /* configure the operations to read the input topic */
