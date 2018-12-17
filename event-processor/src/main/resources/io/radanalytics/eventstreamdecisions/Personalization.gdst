@@ -27,7 +27,6 @@
           <header>Category</header>
           <constraintValueType>1</constraintValueType>
           <factField>eventCategory</factField>
-          <fieldType>String</fieldType>
           <operator>==</operator>
           <parameters/>
           <binding></binding>
@@ -43,7 +42,6 @@
           <header>Value</header>
           <constraintValueType>1</constraintValueType>
           <factField>eventValue</factField>
-          <fieldType>String</fieldType>
           <operator>==</operator>
           <parameters/>
           <binding></binding>
@@ -70,7 +68,6 @@
           <header>Model</header>
           <constraintValueType>1</constraintValueType>
           <factField>modelName</factField>
-          <fieldType>String</fieldType>
           <operator>==</operator>
           <parameters/>
           <binding></binding>
@@ -86,7 +83,6 @@
           <header>Confidence</header>
           <constraintValueType>1</constraintValueType>
           <factField>confidence</factField>
-          <fieldType>Integer</fieldType>
           <operator>&gt;</operator>
           <parameters/>
           <binding></binding>
@@ -158,9 +154,19 @@
     <entries/>
   </auditLog>
   <imports>
-    <imports/>
+    <imports>
+      <org.kie.soup.project.datamodel.imports.Import>
+        <type>com.Event</type>
+      </org.kie.soup.project.datamodel.imports.Import>
+      <org.kie.soup.project.datamodel.imports.Import>
+        <type>com.TrainingModel</type>
+      </org.kie.soup.project.datamodel.imports.Import>
+      <org.kie.soup.project.datamodel.imports.Import>
+        <type>com.eventAnalysis</type>
+      </org.kie.soup.project.datamodel.imports.Import>
+    </imports>
   </imports>
-  <packageName>com</packageName>
+  <packageName></packageName>
   <tableFormat>EXTENDED_ENTRY</tableFormat>
   <hitPolicy>NONE</hitPolicy>
   <data>
@@ -192,9 +198,8 @@
         <isOtherwise>false</isOtherwise>
       </value>
       <value>
-        <valueNumeric class="int">75</valueNumeric>
-        <valueString></valueString>
-        <dataType>NUMERIC_INTEGER</dataType>
+        <valueString>75</valueString>
+        <dataType>STRING</dataType>
         <isOtherwise>false</isOtherwise>
       </value>
       <value>
@@ -203,7 +208,7 @@
         <isOtherwise>false</isOtherwise>
       </value>
       <value>
-        <valueString>Possible Late Payment Waiver</valueString>
+        <valueString>Late Payment Waiver</valueString>
         <dataType>STRING</dataType>
         <isOtherwise>false</isOtherwise>
       </value>
@@ -236,9 +241,8 @@
         <isOtherwise>false</isOtherwise>
       </value>
       <value>
-        <valueNumeric class="int">50</valueNumeric>
-        <valueString></valueString>
-        <dataType>NUMERIC_INTEGER</dataType>
+        <valueString>50</valueString>
+        <dataType>STRING</dataType>
         <isOtherwise>false</isOtherwise>
       </value>
       <value>
@@ -247,7 +251,7 @@
         <isOtherwise>false</isOtherwise>
       </value>
       <value>
-        <valueString>Possible Premium Card Upgrade</valueString>
+        <valueString>Premium Card Upgrade</valueString>
         <dataType>STRING</dataType>
         <isOtherwise>false</isOtherwise>
       </value>
@@ -280,9 +284,8 @@
         <isOtherwise>false</isOtherwise>
       </value>
       <value>
-        <valueNumeric class="int">45</valueNumeric>
-        <valueString></valueString>
-        <dataType>NUMERIC_INTEGER</dataType>
+        <valueString>45</valueString>
+        <dataType>STRING</dataType>
         <isOtherwise>false</isOtherwise>
       </value>
       <value>
@@ -291,7 +294,7 @@
         <isOtherwise>false</isOtherwise>
       </value>
       <value>
-        <valueString>Possible Balance Transfer offer</valueString>
+        <valueString>Balance Transfer offer</valueString>
         <dataType>STRING</dataType>
         <isOtherwise>false</isOtherwise>
       </value>
@@ -324,9 +327,8 @@
         <isOtherwise>false</isOtherwise>
       </value>
       <value>
-        <valueNumeric class="int">70</valueNumeric>
-        <valueString></valueString>
-        <dataType>NUMERIC_INTEGER</dataType>
+        <valueString>70</valueString>
+        <dataType>STRING</dataType>
         <isOtherwise>false</isOtherwise>
       </value>
       <value>
@@ -368,9 +370,8 @@
         <isOtherwise>false</isOtherwise>
       </value>
       <value>
-        <valueNumeric class="int">55</valueNumeric>
-        <valueString></valueString>
-        <dataType>NUMERIC_INTEGER</dataType>
+        <valueString>55</valueString>
+        <dataType>STRING</dataType>
         <isOtherwise>false</isOtherwise>
       </value>
       <value>
@@ -379,7 +380,7 @@
         <isOtherwise>false</isOtherwise>
       </value>
       <value>
-        <valueString>Possible late payment because of failed attempt, broadcast to all channels</valueString>
+        <valueString>Late payment because of failed attempt, broadcast to all channels</valueString>
         <dataType>STRING</dataType>
         <isOtherwise>false</isOtherwise>
       </value>
