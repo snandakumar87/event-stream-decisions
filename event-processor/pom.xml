@@ -111,6 +111,11 @@
             <version>1.4.11.1</version>
             
         </dependency>
+    <dependency>
+<groupId>org.drools</groupId>
+<artifactId>drools-workbench-models-guided-template</artifactId>
+       <version>7.15.0.Final</version>
+</dependency>
 
   </dependencies>
 </project>
