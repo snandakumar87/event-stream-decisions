@@ -5,7 +5,7 @@
 
     <pluginGroups>
         <pluginGroup>jboss-ga-plugin-repository</pluginGroup>
-        <pluginGroup>http://maven.repository.redhat.com/techpreview/all</pluginGroup>
+        <pluginGroup>https://maven.repository.redhat.com/ga/</pluginGroup>
     </pluginGroups>
 
 </settings>
