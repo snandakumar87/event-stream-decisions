@@ -87,7 +87,7 @@ public class App {
 
             eventAnalys = (eventAnalysis) objects.iterator().next();
             return eventAnalys.toString(); } else {
-             return "No Match";   
+             return null;   
             }
         }, DataTypes.StringType);
 
@@ -104,8 +104,7 @@ public class App {
                                      functions.column("json.event_id"),
                                      functions.column("json.event_category"),
                                      functions.column("json.event_value"),
-                                     functions.column("json.event_value")).alias("value")).
-                                     filter("No Match");
+                                     functions.column("json.event_value")).alias("value").isNotNull());
 
         /* configure the output stream */
         StreamingQuery writer = records
