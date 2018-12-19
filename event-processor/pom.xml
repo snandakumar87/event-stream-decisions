@@ -16,6 +16,12 @@
 
   <dependencies>
     <dependency>
+            <groupId>com.redhat</groupId>
+            <artifactId>Personalization_Rules</artifactId>
+            <version>1.0.0</version>
+
+        </dependency>
+    <dependency>
       <groupId>org.kie</groupId>
       <artifactId>kie-internal</artifactId>
       <version>6.4.0.Final</version>
