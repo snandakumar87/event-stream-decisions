@@ -1,11 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
-
-    <pluginGroups>
-        <pluginGroup>jboss-ga-plugin-repository</pluginGroup>
-        <pluginGroup>https://maven.repository.redhat.com/ga/</pluginGroup>
-    </pluginGroups>
-
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/xsd/settings-1.0.0.xsd">
+<pluginGroups>
+<pluginGroup>org.mortbay.jetty</pluginGroup>
+</pluginGroups>
+    <localRepository/>
+    <profiles>
+    <profile>
+      <id>decision-central</id>
+      <repositories>
+        <repository>
+          <id>myteam</id>
+          <name>myteam</name>
+          <url>{usr.mavenRepo}/decision-central/maven2</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </snapshots> 
+        </repository>
+      </repositories>
+    </profile>
+  
+    </profiles>
+    <activeProfiles>
+        <activeProfile>jboss-ga</activeProfile>
+    </activeProfiles>
 </settings>
