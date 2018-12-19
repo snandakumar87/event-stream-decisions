@@ -98,13 +98,13 @@ public class App {
             .option("kafka.bootstrap.servers", brokers)
             .option("subscribe", intopic)
             .load()
-            .select(functions.column("value").cast(DataTypes.StringType).alias("value"))
+            .select(functions.column("value").cast(DataTypes.StringType).alias("value").isNotNull())
             .select(functions.from_json(functions.column("value"), event_msg_struct).alias("json"))
             .select(functions.callUDF("eventfunc",
                                      functions.column("json.event_id"),
                                      functions.column("json.event_category"),
                                      functions.column("json.event_value"),
-                                     functions.column("json.event_value")).alias("value").isNotNull());
+                                     functions.column("json.event_value")).alias("value"));
 
         /* configure the output stream */
         StreamingQuery writer = records
