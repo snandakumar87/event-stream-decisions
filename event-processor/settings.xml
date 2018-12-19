@@ -26,6 +26,6 @@
   
     </profiles>
     <activeProfiles>
-        <activeProfile>jboss-ga</activeProfile>
+        <activeProfile>decision-central</activeProfile>
     </activeProfiles>
 </settings>
