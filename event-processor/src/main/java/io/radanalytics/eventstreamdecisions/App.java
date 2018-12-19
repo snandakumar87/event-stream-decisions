@@ -98,7 +98,6 @@ public class App {
             .option("kafka.bootstrap.servers", brokers)
             .option("subscribe", intopic)
             .load()
-            .filter(functions.column("value").cast(DataTypes.StringType).notEqual("No Match"))
             .select(functions.column("value").cast(DataTypes.StringType).alias("value"))
             .select(functions.from_json(functions.column("value"), event_msg_struct).alias("json"))
             .select(functions.callUDF("eventfunc",
@@ -108,7 +107,7 @@ public class App {
                                      functions.column("json.event_value")).alias("value"));
 
         /* configure the output stream */
-        StreamingQuery writer = records
+        StreamingQuery writer = records.filter(x -> !x.getString(0).contains("No Match"))
             .writeStream()
             .format("kafka")
             .option("kafka.bootstrap.servers", brokers)
