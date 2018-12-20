@@ -11,7 +11,7 @@
       <repositories>
         <repository>
             <id>local-repo</id>
-            <url>http://rhdm7-install-rhdmcentr-rhdm7-install-developer.192.168.64.17.nip.io:8080/maven2</url>
+            <url>https://mymavenrepo.com/repo/EQCJjcQQpqw5GXho9fd6/</url>
         </repository>     
         <servers> 
          <server> 
