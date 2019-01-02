@@ -122,7 +122,8 @@ public class App {
     public static KieBase loadRules() {
         try {
             KieServices kieServices = KieServices.Factory.get();
-            KieContainer kieContainer = kieServices.getKieClasspathContainer();
+            ReleaseId rId1 = kieServices.newReleaseId("com.redhat", "Personalization_Rules", "1.0.0");
+            KieContainer kieContainer = kieServices.newKieContainer(rId1);
             return kieContainer.getKieBase();
         }catch(Exception e) {
             e.printStackTrace();
