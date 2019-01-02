@@ -23,6 +23,7 @@
             <artifactId>Personalization_Rules</artifactId>
             <version>1.0.0</version>
       <scope>system</scope>
+      <systemPath>${basedir}/src/main/resources/Personalization_Rules-1.0.0.jar</systemPath>
 
         </dependency>
     <dependency>
