@@ -29,6 +29,7 @@ import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.StatelessKieSession;
 import org.kie.internal.command.CommandFactory;
+import org.kie.api.builder.ReleaseId;
 
 public class App {
     public static void main(String[] args) throws Exception {
