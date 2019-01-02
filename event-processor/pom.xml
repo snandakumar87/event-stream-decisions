@@ -22,7 +22,7 @@
             <groupId>com.redhat</groupId>
             <artifactId>Personalization_Rules</artifactId>
             <version>1.0.0</version>
-      <scope>provided</scope>
+      <scope>system</scope>
 
         </dependency>
     <dependency>
