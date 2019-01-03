@@ -218,7 +218,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.Main</mainClass>
+							<mainClass>io.radanalytics.eventstreamdecisions.App</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
