@@ -14,22 +14,11 @@
     <spark.version>2.3.0</spark.version>
   
   </properties>
- <repositories>
-        <repository>
-            <id>project.local</id>
-            <name>project</name>
-            <url>file:${basedir}/repo</url>
-        </repository>
-    </repositories>
 
    
   
   <dependencies>
-    <dependency>
-            <groupId>com.redhat</groupId>
-            <artifactId>Personalization_Rules</artifactId>
-            <version>1.0.0</version> 
-        </dependency>
+    
     <dependency>
       <groupId>org.kie</groupId>
       <artifactId>kie-internal</artifactId>
@@ -189,30 +178,7 @@
         </executions>
       </plugin>
       
-       <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-install-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>install-external</id>
-                        <phase>clean</phase>
-                        <configuration>
-                            <file>${basedir}/repo/com/redhat/Personalization_Rules/1.0.0/Personalization_Rules-1.0.0.jar</file>
-                            <repositoryLayout>default</repositoryLayout>
-                            <groupId>com.redhat</groupId>
-                            <artifactId>Personalization_Rules</artifactId>
-                            <version>1.0.0</version>
-                            <packaging>jar</packaging>
-                            <generatePom>true</generatePom>
-                        </configuration>
-                        <goals>
-                            <goal>install-file</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-      
-      <plugin>
+     
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
