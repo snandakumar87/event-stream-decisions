@@ -81,7 +81,7 @@
     <dependency>
       <groupId>org.drools</groupId>
       <artifactId>drools-workbench-models-guided-dtable</artifactId>
-      <version>6.4.0.Final</version>
+      <version>7.5.0.Final</version>
     </dependency>
     <dependency>
       <groupId>org.kie</groupId>
