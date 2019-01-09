@@ -52,6 +52,7 @@ def main(args):
 
     logging.info('begin sending events')
     while True:
+        logging.info('here we are')
         logging.info(args.topic)
         logging.info(json.dumps(generate_event()).encode())
         producer.send(args.topic, json.dumps(generate_event()).encode())
