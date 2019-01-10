@@ -13,6 +13,15 @@ apache kafka topic. the processor will use apache spark to read messages from
 the topic and then use drools to apply rules to each message. the results of
 the rules application is then broadcast onto a second topic.
 
+Example Input events:
+{"event_category": "CC_BALANCE_PAYMENT", "event_src": "CC", "event_value": "CASE_CREATED", "event_id": "a417a32e-6174-462c-aed4-5e502ac28a43"}
+
+Example Output events:
+"eventAnalysisModels" : [ {
+    "eventEffectiveness" : "ALERT",
+    "eventResponsePayload" : "Late Payment Waiver Offered"
+  }
+
 # quickstart
 
 **prerequisites**
