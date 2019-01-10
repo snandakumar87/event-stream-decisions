@@ -1,5 +1,10 @@
 # event stream decisions
 
+
+This demo shows how we can define a guided decision table in Red Hat decision manager and get the kjar imported as dependency inside of a spark application. The spark job reads a customer profile (in json format) with real time events and a set of training models which can be fed in from within a big data analysis engine (using AI/ML). The job when complete outputs the CustomerProfile with useful events which can be sent to downstream systems for taking action. The events are filtered by passing them through a guided decision table which analyses real time events against training models analyzed over a historic time period.
+
+Refer to https://github.com/snandakumar87/PersonalizationRules for the rules project. The project can be imported on Red Hat Decision Manager by importing the Repository link. Since the Spark Application code needs the mvn dependency for the rule, this has build and deployed so that it is available in the local maven repo. For the purpose of testing, i have added a static version of the rule mvn jar in the repo.
+
 a project for processing an event stream using business rules
 
 the subdirectories in this repository are applications that comprise this
@@ -54,7 +59,7 @@ the rules application is then broadcast onto a second topic.
 1. deploy the event-emitter. this service will generate the event data to be
    processed.
    ```
-   oc new-app centos/python-36-centos7~https://github.com/elmiko/event-stream-decisions \
+   oc new-app centos/python-36-centos7~https://github.com/snandakumar87/event-stream-decisions \
      --context-dir event-emitter \
      -e KAFKA_BROKERS=kafka.kafka.svc:9092 \
      -e KAFKA_TOPIC=events \
@@ -69,7 +74,7 @@ the rules application is then broadcast onto a second topic.
    ```
    oc new-app --template oshinko-java-spark-build-dc \
        -p APPLICATION_NAME=event-processor \
-       -p GIT_URI=https://github.com/elmiko/event-stream-decisions \
+       -p GIT_URI=https://github.com/snandakumar87/event-stream-decisions \
        -p CONTEXT_DIR=event-processor \
        -p APP_FILE=eventstreamdecisions-1.0-SNAPSHOT.jar \
        -p SPARK_OPTIONS='--packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.3.0 --conf spark.jars.ivy=/tmp/.ivy2' \
