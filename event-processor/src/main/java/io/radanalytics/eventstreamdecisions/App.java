@@ -70,7 +70,7 @@ public class App {
 
         /* register a user defined function to apply rules on events */
         spark.udf().register("eventfunc", (String eventId, String eventCategory, String eventValue, String eventSrc) -> {
-            KieSession kieSession = rules.newKieSession();
+            KieSession kieSession = broadcastRules.value().newKieSession();
             Event e = new Event();
             e.setEventId(eventId);
             e.setEventCategory(eventCategory);
